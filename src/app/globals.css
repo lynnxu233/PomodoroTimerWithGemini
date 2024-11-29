@@ -19,3 +19,27 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.customContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.video-area{
+  flex: 2
+}
+
+.info-area{
+  flex: 1;
+}
+
+.custom-chat-area{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  gap: 10px;
+}

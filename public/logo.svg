@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+  <!-- Background -->
+  <rect width="300" height="200" fill="white"/>
+  
+  <!-- Book -->
+  <g transform="translate(100, 50)">
+    <!-- Book base -->
+    <path d="M0 0 L80 0 L80 100 L0 100 Z" fill="#2C7AD6" rx="5" ry="5"/>
+    
+    <!-- Book pages -->
+    <path d="M10 10 L70 10 L70 90 L10 90 Z" fill="white" stroke="#2C7AD6" stroke-width="2"/>
+    
+    <!-- Book shadow/depth -->
+    <path d="M80 0 L90 10 L90 100 L80 100 Z" fill="#1A4E8C" opacity="0.3"/>
+    
+    <!-- Lamp inside the blue book window -->
+    <g transform="translate(20, 30) scale(0.6)">
+      <!-- Lamp base -->
+      <rect x="0" y="80" width="20" height="10" fill="#4A4A4A"/>
+      
+      <!-- Lamp arm -->
+      <path d="M10 80 L20 40 L40 30" fill="none" stroke="#4A4A4A" stroke-width="3"/>
+      
+      <!-- Lamp head -->
+      <circle cx="40" cy="30" r="15" fill="#FFD700" opacity="0.7"/>
+      <circle cx="40" cy="30" r="10" fill="#FFF176" opacity="0.5"/>
+    </g>
+  </g>
+  
+  <!-- Text with custom handwritten-style font -->
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+    </style>
+  </defs>
+  <text x="150" y="180" 
+        text-anchor="middle" 
+        font-family="Caveat, cursive" 
+        font-size="30" 
+        font-weight="600" 
+        fill="#2C7AD6">
+    Study With Me
+  </text>
+</svg>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@material-tailwind/react": "^2.1.10",
     "marked": "^15.0.2",
     "next": "15.0.3",
     "next-theme": "^0.1.5",
