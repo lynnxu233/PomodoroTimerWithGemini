@@ -7,6 +7,10 @@ import MusicCard from "@/components/MusicCard";
 import { CardWithList } from "@/components/CardWithList";
 import { ProgressBar } from "@/components/ProgressBar";
 import ChatArea from "@/components/ChatArea";
+import VideoPlayer from "@/components/VideoPlayer";
+import ProgressAnimation from "@/components/ProgressAnimation";
+import TimePicker from "@/components/TimePicker";
+import StartPanel from "@/components/StartPanel";
 
 export default function Home() {
 
@@ -50,13 +54,17 @@ export default function Home() {
 
   return (
 
-    <div className="customContainer flex min-h-screen bg-gradient-to-t from-blue-200 to-indigo-900 p-5">
+    <div className="customContainer flex min-h-screen"   style={{
+      backgroundColor: "#d9d2c1", backgroundImage: "https://www.transparenttextures.com/patterns/asfalt-dark.png"
+    }}>
       <div className = "video-area">
-        music/ video area; 
+        <ProgressAnimation studytime={70}/>
+        {/* <VideoPlayer /> */}
       </div>
       <div className="info-area">
-        <p className="inter antialiased"> Study with Me</p>
-        <ProgressBar studytime={23} />
+        <div className="panel-area" style={{marginTop:"6rem"}}>
+          <StartPanel />
+        </div>
         <ChatArea messages={messages}/>
       </div>
       {/* <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-200 mb-5"> study room </h1> */}

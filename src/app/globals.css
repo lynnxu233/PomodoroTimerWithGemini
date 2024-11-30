@@ -29,14 +29,37 @@ body {
 }
 
 .video-area{
-  flex: 2
+  flex: 2;
+  min-width: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-area{
   flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between;
+  flex-wrap: wrap; */
+  /* align-content: flex-start; */
+  height: 100vh;
+  gap:3rem;
+
+}
+
+.panel-area{
+  flex: 1;
+  align-self: flex-start;
 }
 
 .custom-chat-area{
+  flex: 1;
+  margin-top: auto;
+
   margin: 10px;
   display: flex;
   flex-direction: column;

@@ -18,7 +18,7 @@ interface ProgressBarProp {
 export function ProgressBar(props:ProgressBarProp) {
   const {studytime} = props;
     return (
-      <Card className="w-full max-w-[48rem] flex-row bg-transparent">
+      <Card className="w-4/5 max-w-[48rem] flex-row bg-transparent justify-end">
       <CardBody>
         <Typography variant="h6" color="blue-gray" className="mb-4 uppercase">
           Current Process
