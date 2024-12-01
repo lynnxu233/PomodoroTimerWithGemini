@@ -1,16 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import StudyAdvice from "@/components/StudyAdvice"; 
-import AudioComponent from "@/components/AudioComponent";
-import MusicCard from "@/components/MusicCard";
-import { CardWithList } from "@/components/CardWithList";
-import { ProgressBar } from "@/components/ProgressBar";
+
 import ChatArea from "@/components/ChatArea";
-import VideoPlayer from "@/components/VideoPlayer";
 import ProgressAnimation from "@/components/ProgressAnimation";
-import TimePicker from "@/components/TimePicker";
 import StartPanel from "@/components/StartPanel";
+
+import {guidingMessages, Message} from "@/lib/messages";
+
 
 export default function Home() {
 
@@ -35,22 +32,9 @@ export default function Home() {
   //     });
   // }, []);
 
-  const messages = [
-    {
-      id: 1,
-      content: "Hi, this is the afternoon of Tokyo, start study with me, till the sunset",
-      author: "Bonnie Green",
-      timestamp: "16:46 PM",
-      status: "Delivered",
-    },
-    {
-      id: 2,
-      content: "Great Job!!",
-      author: "John Doe",
-      timestamp: "17:47 PM",
-      status: "Read",
-    },
-  ];
+  const messages:Message[] = guidingMessages;
+
+  const [studyTime, setStudyTime] = useState(0); // minutes
 
   return (
 
@@ -58,19 +42,16 @@ export default function Home() {
       backgroundColor: "#d9d2c1", backgroundImage: "https://www.transparenttextures.com/patterns/asfalt-dark.png"
     }}>
       <div className = "video-area">
-        <ProgressAnimation studytime={70}/>
-        {/* <VideoPlayer /> */}
+        <ProgressAnimation studyTime={studyTime}/>
       </div>
       <div className="info-area">
-        <div className="panel-area" style={{marginTop:"6rem"}}>
-          <StartPanel />
+        <div className="panel-area h-1/2" style={{marginTop:"6rem"}}>
+          <StartPanel onStart={setStudyTime}/>
         </div>
+        <div className="h-1/2" style={{marginBottom:"5rem"}}>
         <ChatArea messages={messages}/>
+        </div>
       </div>
-      {/* <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-200 mb-5"> study room </h1> */}
-      {/* <StudyAdvice results = {result} /> */}
-      {/* <MusicCard /> */}
-      {/* <CardWithList /> */}
     </div>
 
   );

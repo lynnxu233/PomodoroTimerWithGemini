@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-export default function TimePicker() {
-    const timeRange = [0.5, 1, 1.5, 2, 2.5, 3]; // Durations in hours
+export default function TimePicker( {onSelect}) {
+
+    const timeRange = [30, 60, 90, 120];
     const [selectedDuration, setSelectedDuration] = useState<number | null>(null); // To store the selected duration
     const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false); // Manage dropdown visibility
 
@@ -10,7 +11,8 @@ export default function TimePicker() {
     };
 
     const selectDuration = (duration: number) => {
-        setSelectedDuration(duration); // Update the input field with the selected duration
+        onSelect(duration);
+        setSelectedDuration(duration);
         setDropdownOpen(false); // Close dropdown after selection
     };
 
@@ -29,7 +31,7 @@ export default function TimePicker() {
                     type="text" // Changed from "time" to "text" for custom duration display
                     id="time"
                     className="rounded-none rounded-s-lg bg-gray-50 border text-gray-900 leading-none focus:ring-blue-500 focus:border-blue-500 block flex-1 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={selectedDuration ? `${selectedDuration} hours` : ""}
+                    value={selectedDuration ? `${selectedDuration} minutes` : ""}
                     placeholder="Select duration"
                     readOnly // Prevent manual edits
                 />
@@ -78,7 +80,7 @@ export default function TimePicker() {
                                         role="menuitem"
                                         onClick={() => selectDuration(duration)}
                                     >
-                                        {duration} hours
+                                        {duration} mins
                                     </button>
                                 </li>
                             ))}
