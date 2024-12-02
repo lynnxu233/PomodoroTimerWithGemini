@@ -36,6 +36,22 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  /* background-image: url("/bg.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 25%;
+
+  background-image: url("/star.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 20%; */
+  background-image: url("/bg.svg"), url("/star.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, 95% 25%;
+  background-size: 40%, 20%;
+
+  height: 100vh;
 }
 
 .info-area{
