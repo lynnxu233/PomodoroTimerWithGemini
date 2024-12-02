@@ -16,55 +16,120 @@ interface ProgressAnimationProps{
 
 export default function ProgressAnimation(props: ProgressAnimationProps){
     const {studyTime} = props;
-    const poromodoDuration = 30*60; // convert to seconds
-    const breakDuration = 5*60;
+    const poromodoDuration = 1*60; // convert to seconds
+    const breakDuration = 1*60;
     const totalPomodoro = studyTime.valueOf()*60/poromodoDuration;
-  
-    const [numberOfPoromodo, setNumOfPoromodo] = useState(0); // the total number of poromodo
+
+    const [numberOfPoromodo, setNumOfPoromodo] = useState(totalPomodoro); // the total number of poromodo
 
     const [timeLeft, setTimeLeft] = useState(poromodoDuration); 
     const [progress, setProgress] = useState(0);
     const [notification, setNotification] = useState("Start your study time!");
     const [mode, setMode] = useState("focus"); // "focus", "break", "finish"
 
-    useEffect(() => {
-      console.log(`studyTime: ${studyTime},totalPomodoro: ${totalPomodoro}, numberOfPoromodo: ${numberOfPoromodo}, timeLeft: ${timeLeft}, mode: ${mode}`);
+    // useEffect(() => {
+    //   setNumOfPoromodo(Math.floor(studyTime / (poromodoDuration / 60)));
+    // }, [studyTime]);
 
-      if (numberOfPoromodo > 0 && timeLeft > 0 && mode=="focus") {
 
-        setNotification(notifications(mode, totalPomodoro - numberOfPoromodo+1));
+    // useEffect(() => {
+    //   console.log(`studyTime: ${studyTime},totalPomodoro: ${totalPomodoro}, numberOfPoromodo: ${numberOfPoromodo}, timeLeft: ${timeLeft}, mode: ${mode}`);
 
-        const interval = setInterval(() => {
-          setTimeLeft((prev) => prev - 1);
-          if (mode === "focus") {
-            setProgress(((poromodoDuration - timeLeft) / (poromodoDuration)) * 100);
+    //   if (numberOfPoromodo > 0 && timeLeft > 0 && mode=="focus") {
+
+    //     setNotification(notifications(mode, totalPomodoro - numberOfPoromodo+1));
+
+    //     const interval = setInterval(() => {
+    //       setTimeLeft((prev) => prev - 1);
+    //       if (mode === "focus") {
+    //         setProgress((prev) => prev + 1);
+    //         // Math.round(((poromodoDuration - timeLeft) / (poromodoDuration)) * 100)
+    //       }
+    //       if (timeLeft === 0) {
+    //         setNumOfPoromodo((prev) => prev - 1);
+    //         setProgress(0);
+    //         numberOfPoromodo===0 ? setMode("finish"):setMode("break");
+    //         clearInterval(interval); 
+    //       }
+    //     }, 1000);
+    //     return () => clearInterval(interval);
+    //   } else if (numberOfPoromodo > 0 && timeLeft === 0 && mode === "break") {
+    //     setNotification(notifications(mode));
+
+    //     setTimeLeft(breakDuration); 
+    //     setProgress(0);
+
+    //     const interval = setInterval(() => {
+    //       setTimeLeft((prev) => prev - 1); 
+    //       if(timeLeft === 0){
+    //         setMode("focus");
+    //         clearInterval(interval); 
+    //       }
+    //     }, 1000);
+    //     return () => clearInterval(interval);
+
+    //   } else if (numberOfPoromodo === 0 && mode === "finish") {
+    //     setNotification(notifications(mode));
+    //   }
+    // }, [timeLeft, numberOfPoromodo, progress, mode, studyTime, totalPomodoro, poromodoDuration, breakDuration]);
+
+      // Recalculate and update numberOfPoromodo when studyTime changes
+      
+  useEffect(() => {
+    setNumOfPoromodo(Math.floor(studyTime / (poromodoDuration / 60)));
+  }, [studyTime]);
+  
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    // Recalculate numberOfPoromodo when studyTime changes
+    setNumOfPoromodo(Math.floor(studyTime / (poromodoDuration / 60)));
+
+    if (numberOfPoromodo > 0) {
+      // Focus mode with pomodoro countdown
+      if (mode === "focus" && timeLeft > 0) {
+        setNotification(`Focus: ${numberOfPoromodo} pomodoros remaining.`);
+
+        interval = setInterval(() => {
+          setTimeLeft((prev) => prev - 1); // Update time left every second
+          setProgress((prev) => Math.round(((poromodoDuration - (timeLeft - 1)) / poromodoDuration) * 100)); // Update progress based on remaining time
+
+          // When timeLeft reaches 0, end the pomodoro and switch to break mode
+          if (timeLeft === 1) {
+            setProgress(100); // Ensure 100% progress when time is up
           }
+
           if (timeLeft === 0) {
-            setNumOfPoromodo((prev) => prev - 1);
-            numberOfPoromodo===0 ? setMode("finish"):setMode("break");
-            clearInterval(interval); 
+            setNumOfPoromodo((prev) => prev - 1); // Decrease the number of pomodoros
+            setProgress(0);
+            setMode("break"); // Switch to break mode after focus ends
+            setTimeLeft(breakDuration); // Set time left for break
+            clearInterval(interval); // Clear the interval
+            console.log(`studyTime: ${studyTime},numberOfPoromodo: ${numberOfPoromodo}, timeLeft: ${timeLeft}, mode: ${mode}`);
           }
         }, 1000);
-        return;
-      } else if (numberOfPoromodo > 0 && timeLeft === 0 && mode === "break") {
-        setNotification(notifications(mode));
-
-        setTimeLeft(breakDuration); 
-        setProgress(0);
-
-        const interval = setInterval(() => {
-          setTimeLeft((prev) => prev - 1); 
-          if(timeLeft === 0){
-            setMode("focus");
-            clearInterval(interval); 
-          }
-        }, 1000);
-
-      } else if (numberOfPoromodo === 0 && mode === "finish") {
-        setNotification(notifications(mode));
       }
-    }, [timeLeft, mode, studyTime]);
 
+      // Break mode after pomodoro ends
+      else if (mode === "break" && timeLeft === 0) {
+        setNotification("Take a break!");
+
+        interval = setInterval(() => {
+          setTimeLeft((prev) => prev - 1); // Countdown break time
+
+          if (timeLeft === 0) {
+            setMode("focus"); // Switch back to focus mode after break
+            setTimeLeft(poromodoDuration); // Reset time for focus mode
+            clearInterval(interval); // Clear the interval
+          }
+        }, 1000);
+      }
+    } else if (numberOfPoromodo === 0 && mode === "finish") {
+      setNotification("All pomodoros completed!");
+    }
+
+    return () => clearInterval(interval); // Cleanup the interval on mode change or unmount
+    }, [timeLeft, numberOfPoromodo, mode, studyTime]);
 
     return (
         <Card className="w-full max-w-[48rem] flex-col bg-transparent justify-start">

@@ -7,15 +7,27 @@ import {
     Typography,
     Button,
   } from "@material-tailwind/react";
+
   
 
-export default function StartPanel({ onStart }){
-  const [studyTime, setStudyTime] = useState(30);
+export default function StartPanel({ onStart, onReset}){
+  const [studyTime1, setStudyTime1] = useState(0);
+  const [resetSelection, setResetSelection] = useState(0);
+
   const handleStart = () => {
-    if (studyTime > 0) {
-      onStart(studyTime);
+    if (studyTime1 > 0) {
+      console.log("click start in start")
+      onStart(studyTime1);
+      onReset(0);
     }
   };
+
+  const handleReset = ()=> {
+    console.log("click reset in start")
+    onReset(prev => prev+1);
+    setResetSelection(prev => prev+1);
+  }
+
 
     return (
           <Card className="w-full max-w-[48rem] flex-col bg-transparent justify-start">
@@ -24,9 +36,10 @@ export default function StartPanel({ onStart }){
                 Start Your Journey with me 😊
               </Typography>
               <div>
-              <TimePicker onSelect = {setStudyTime}/>
+              <TimePicker onSelect = {setStudyTime1} resetSelection = {resetSelection}/>
               </div>
-              <a href="#" className="inline-block">
+              <div className="flex flex-row" >
+
                 <Button variant="text" className="flex items-center gap-2" style={{marginTop:"1rem"}} 
                 onClick={handleStart}>
                   Start
@@ -45,7 +58,15 @@ export default function StartPanel({ onStart }){
                     />
                   </svg>
                 </Button>
-              </a>
+
+              <Button variant="text" className="flex items-center gap-2" style={{marginTop:"1rem"}} 
+                onClick={handleReset}>
+                  Reset
+
+                </Button>
+
+              </div>
+
             </CardBody>
           </Card>
 

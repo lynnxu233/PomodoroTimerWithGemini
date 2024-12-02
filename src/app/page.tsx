@@ -7,6 +7,8 @@ import ProgressAnimation from "@/components/ProgressAnimation";
 import StartPanel from "@/components/StartPanel";
 
 import {guidingMessages, Message} from "@/lib/messages";
+import PomodoroTimerTest from "@/components/PomodoroTimerTest";
+import DefaultTimer from "@/components/DefaultTimer";
 
 
 export default function Home() {
@@ -35,6 +37,8 @@ export default function Home() {
   const messages:Message[] = guidingMessages;
 
   const [studyTime, setStudyTime] = useState(0); // minutes
+  const [resetTimer, setResetTimer] = useState(0);
+  
 
   return (
 
@@ -42,11 +46,15 @@ export default function Home() {
       backgroundColor: "#d9d2c1", backgroundImage: "https://www.transparenttextures.com/patterns/asfalt-dark.png"
     }}>
       <div className = "video-area">
-        <ProgressAnimation studyTime={studyTime}/>
+        {
+        studyTime === 0? (<DefaultTimer />): 
+        (<PomodoroTimerTest studyTime = {studyTime} setStudyTime = {setStudyTime} resetTrigger={resetTimer}/>)  
+      }
+      <p> {studyTime} </p>
       </div>
       <div className="info-area">
         <div className="panel-area h-1/2" style={{marginTop:"6rem"}}>
-          <StartPanel onStart={setStudyTime}/>
+          <StartPanel onStart={setStudyTime} onReset = {setResetTimer}/>
         </div>
         <div className="h-1/2" style={{marginBottom:"5rem"}}>
         <ChatArea messages={messages}/>
