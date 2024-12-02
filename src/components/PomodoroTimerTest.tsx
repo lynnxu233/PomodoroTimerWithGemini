@@ -25,11 +25,12 @@ interface PomorodoProps{
     studyTime: number,
     resetTrigger: number,
     setStudyTime: (time: number) => void;
+    setStatus: (currStatus: string) => void; // this is used for synchronize the chat area
 }
 
 const PomodoroTimerTest: React.FC<PomorodoProps> = (props) => {
 
-  const {studyTime, resetTrigger, setStudyTime} = props; 
+  const {studyTime, resetTrigger, setStudyTime, setStatus} = props; 
 
   // State for configuration
   const [config, setConfig] = useState<PomodoroConfig>({
@@ -80,6 +81,7 @@ const PomodoroTimerTest: React.FC<PomorodoProps> = (props) => {
         // first time 
         if(currentState === "start"){
             setCurrentState("working");
+            setStatus("working");
         }
       intervalId = setInterval(() => {
         setTimeRemaining(prev => prev - 1);
@@ -94,14 +96,17 @@ const PomodoroTimerTest: React.FC<PomorodoProps> = (props) => {
           // Determine next break type
           if (newCompletedSessions % config.sessionsBeforeCompletion === 0) {
             setCurrentState('finish');
+            setStatus("finish");
             setTimeRemaining(0);
           } else {
             setCurrentState('shortBreak');
+            setStatus("shortBreak");
             setTimeRemaining(configInSeconds.breakTime);
           }
           break;
         case 'shortBreak':
             setCurrentState('working');
+            setStatus("working");
             setTimeRemaining(configInSeconds.workTime);
             break;
         case 'finish':
@@ -145,6 +150,7 @@ const PomodoroTimerTest: React.FC<PomorodoProps> = (props) => {
   const resetTimer = () => {
     setIsRunning(false);
     setCurrentState('start');
+    setStatus('start');
     setTimeRemaining(configInSeconds.workTime);
     setCompletedSessions(0);
     setStudyTime(0);

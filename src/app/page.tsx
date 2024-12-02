@@ -38,6 +38,7 @@ export default function Home() {
 
   const [studyTime, setStudyTime] = useState(0); // minutes
   const [resetTimer, setResetTimer] = useState(0);
+  const [status, setStatus] = useState("start");
   
 
   return (
@@ -48,7 +49,7 @@ export default function Home() {
       <div className = "video-area">
         {
         studyTime === 0? (<DefaultTimer />): 
-        (<PomodoroTimerTest studyTime = {studyTime} setStudyTime = {setStudyTime} resetTrigger={resetTimer}/>)  
+        (<PomodoroTimerTest studyTime = {studyTime} setStudyTime = {setStudyTime} resetTrigger={resetTimer} setStatus = {setStatus}/>)  
       }
       <p> {studyTime} </p>
       </div>
@@ -57,7 +58,7 @@ export default function Home() {
           <StartPanel onStart={setStudyTime} onReset = {setResetTimer}/>
         </div>
         <div className="h-1/2" style={{marginBottom:"5rem"}}>
-        <ChatArea messages={messages}/>
+        <ChatArea messages={messages} status = {status}/>
         </div>
       </div>
     </div>

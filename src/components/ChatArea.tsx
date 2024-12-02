@@ -1,6 +1,6 @@
 "use client";
 import ChatBubble from "./ ChatBubble";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardBody,
@@ -19,22 +19,33 @@ interface ChatMessage {
 
 interface ChatAreaProps {
     messages: ChatMessage[];
+    status: string;
   }
   
-
+  
 function ChatArea(props:ChatAreaProps){
-    const {messages} = props;
+    const {messages, status} = props;
+    const [currentState, setCurrentState] = useState("start");
     const [messageList, setMessages] = useState(messages);
     const deleteMessage = (id: number) => {
       setMessages(prevMessages => prevMessages.filter(message => message.id !== id));
       console.log(messageList);
     };
 
+    // synchronize with the pomodoro status 
+    useEffect(()=>{
+      setCurrentState(status);
+    }, [status]);
+
+    // 
+
+
+
     return (
       <Card className="w-full max-w-[48rem] bg-transparent flex-col justify-end">
       <CardBody>
         <Typography variant="h6" color="blue-gray" className="mb-4 uppercase">
-          ChatBox
+          ChatBox - {currentState}
         </Typography>
         <div className="custom-chat-area">
             {messageList.map((message) => (
