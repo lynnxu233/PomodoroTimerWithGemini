@@ -27,54 +27,6 @@ export default function ProgressAnimation(props: ProgressAnimationProps){
     const [notification, setNotification] = useState("Start your study time!");
     const [mode, setMode] = useState("focus"); // "focus", "break", "finish"
 
-    // useEffect(() => {
-    //   setNumOfPoromodo(Math.floor(studyTime / (poromodoDuration / 60)));
-    // }, [studyTime]);
-
-
-    // useEffect(() => {
-    //   console.log(`studyTime: ${studyTime},totalPomodoro: ${totalPomodoro}, numberOfPoromodo: ${numberOfPoromodo}, timeLeft: ${timeLeft}, mode: ${mode}`);
-
-    //   if (numberOfPoromodo > 0 && timeLeft > 0 && mode=="focus") {
-
-    //     setNotification(notifications(mode, totalPomodoro - numberOfPoromodo+1));
-
-    //     const interval = setInterval(() => {
-    //       setTimeLeft((prev) => prev - 1);
-    //       if (mode === "focus") {
-    //         setProgress((prev) => prev + 1);
-    //         // Math.round(((poromodoDuration - timeLeft) / (poromodoDuration)) * 100)
-    //       }
-    //       if (timeLeft === 0) {
-    //         setNumOfPoromodo((prev) => prev - 1);
-    //         setProgress(0);
-    //         numberOfPoromodo===0 ? setMode("finish"):setMode("break");
-    //         clearInterval(interval); 
-    //       }
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-    //   } else if (numberOfPoromodo > 0 && timeLeft === 0 && mode === "break") {
-    //     setNotification(notifications(mode));
-
-    //     setTimeLeft(breakDuration); 
-    //     setProgress(0);
-
-    //     const interval = setInterval(() => {
-    //       setTimeLeft((prev) => prev - 1); 
-    //       if(timeLeft === 0){
-    //         setMode("focus");
-    //         clearInterval(interval); 
-    //       }
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-
-    //   } else if (numberOfPoromodo === 0 && mode === "finish") {
-    //     setNotification(notifications(mode));
-    //   }
-    // }, [timeLeft, numberOfPoromodo, progress, mode, studyTime, totalPomodoro, poromodoDuration, breakDuration]);
-
-      // Recalculate and update numberOfPoromodo when studyTime changes
-      
   useEffect(() => {
     setNumOfPoromodo(Math.floor(studyTime / (poromodoDuration / 60)));
   }, [studyTime]);

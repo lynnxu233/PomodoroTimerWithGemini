@@ -58,7 +58,7 @@ export default function Home() {
           <StartPanel onStart={setStudyTime} onReset = {setResetTimer}/>
         </div>
         <div className="h-1/2" style={{marginBottom:"5rem"}}>
-        <ChatArea messages={messages} status = {status}/>
+        <ChatArea messages={messages} status = {status} studyTime = {studyTime}/>
         </div>
       </div>
     </div>
