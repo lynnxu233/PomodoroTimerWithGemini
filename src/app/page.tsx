@@ -51,7 +51,6 @@ export default function Home() {
         studyTime === 0? (<DefaultTimer />): 
         (<PomodoroTimerTest studyTime = {studyTime} setStudyTime = {setStudyTime} resetTrigger={resetTimer} setStatus = {setStatus}/>)  
       }
-      <p> {studyTime} </p>
       </div>
       <div className="info-area">
         <div className="panel-area h-1/2" style={{marginTop:"6rem"}}>

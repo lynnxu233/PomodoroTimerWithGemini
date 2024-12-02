@@ -41,6 +41,7 @@ function ChatArea(props:ChatAreaProps){
     const [prompt, setPrompt] = useState(`I'm at the ${currentState} state of pomodoro timer for study. 
           It's  ${(new Date()).toLocaleTimeString()}. encourage me to start`)
 
+
     const deleteMessage = (id: number) => {
       setMessages(prevMessages => prevMessages.filter(message => message.id !== id));
       console.log(messageList);
@@ -116,6 +117,26 @@ function ChatArea(props:ChatAreaProps){
         });
     }, [initialPrompt, prompt]);
 
+    const playMessageSound = () => {
+      const sound = new Audio("/message.wav"); // Path to your sound file
+      sound.play().catch((err) => console.error("Sound play error:", err));
+    };
+
+    /* Updating message area */
+    useEffect(()=> {
+      const rawMessages = [result];
+      const updatedMessages = rawMessages.map((message, index) => ({
+        id: index + 1, // Unique ID for each message
+        content: message.trim(), // Trim any extra whitespace
+        author: "Gemini Google", 
+        timestamp: new Date().toLocaleTimeString(), // Current timestamp in ISO format
+        status: "received", // Default status
+      }));
+      setMessages(updatedMessages); // Update state with new messages
+      playMessageSound();
+    }, 
+  [result])
+
 
 
     return (
@@ -124,9 +145,20 @@ function ChatArea(props:ChatAreaProps){
         <Typography variant="h6" color="blue-gray" className="mb-4 uppercase">
           ChatBox - {currentState}
         </Typography>
-        <p> {result} </p>
         <div className="custom-chat-area">
-            {messageList.map((message) => (
+            {messageList.map((message, index) => (
+              <div 
+            key={message.id}
+            className="animate-slide-in-up 
+            opacity-0 
+            ${index > 0 ? 'delay-100' : ''} 
+            transition-all 
+            duration-500"
+            style={{
+              // Optional: Add more precise control with inline styles
+              animationDelay: `${index * 0.1}s`
+            }}
+            >
             <ChatBubble
             key={message.id}
             content={message.content}
@@ -136,6 +168,7 @@ function ChatArea(props:ChatAreaProps){
             id = {message.id}
             onDelete={deleteMessage}
             />
+            </div>
             ))}
         </div>
       </CardBody>

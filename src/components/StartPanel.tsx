@@ -32,7 +32,7 @@ export default function StartPanel({ onStart, onReset}){
     return (
           <Card className="w-full max-w-[48rem] flex-col bg-transparent justify-start">
             <CardBody>
-              <Typography variant="h4" color="cyan" className="mb-2">
+              <Typography variant="h4" color="black" className="mb-2">
                 Start Your Journey with me 😊
               </Typography>
               <div>
