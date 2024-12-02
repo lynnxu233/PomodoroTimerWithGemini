@@ -50,6 +50,6 @@ export const example_answers = {
     ]
 }
 
-const intro = "if you're new, the pomodoro techniques is a method that boosts productivity, by breaking down work periods into 30-min slices, separated by short breaks."
+export const intro = "if you're new, the pomodoro techniques is a method that boosts productivity, by breaking down work periods into 30-min slices, separated by short breaks. When you're ready, click the start button to get started!! Let's get started!!"
 
 

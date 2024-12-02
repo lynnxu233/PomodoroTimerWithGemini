@@ -33,7 +33,7 @@ export default function ChatBubble(props: ChatBubbleProps) {
           </button>
         </div>
         <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">{content}</p>
-        <span className="text-sm font-normal text-gray-500 dark:text-gray-400">{status}</span>
+        <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> Delivered</span>
       </div>
       <img className="w-8 h-8 rounded-full" src={avatarUrl} alt="Avatar" />
     </div>

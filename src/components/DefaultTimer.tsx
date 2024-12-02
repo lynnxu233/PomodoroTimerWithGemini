@@ -12,16 +12,14 @@ const DefaultTimer: React.FC = () => {
       <Card>
 
         <CardBody>
-        <Typography className="text-center">
-        This is Gemini assisted pomodoro timer🍅 
-        Pomodoro Timer Instruction</Typography>
           {/* Timer Display */}
           <div className="text-center mb-4">
             <p className="text-2xl font-bold mb-2">
-              Choose the time span and start to self study alone!!!
+            🍅 Gemini Pomodoro Timer: Your AI Study Buddy!
             </p>
           </div>
-
+          <Typography className="text-center">  Unlock Your Productivity Potential 💡 </Typography>
+          <Typography className="text-center">  You're never studying alone with Gemini by your side. 🚀 </Typography>
          
         </CardBody>
       </Card>

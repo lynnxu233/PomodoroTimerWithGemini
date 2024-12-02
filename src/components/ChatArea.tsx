@@ -7,7 +7,7 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { example_questions, example_answers } from "@/lib/prompts";
+import { example_questions, example_answers, intro } from "@/lib/prompts";
 
 interface ChatMessage {
     id: number;
@@ -51,7 +51,7 @@ function ChatArea(props:ChatAreaProps){
       let questions = example_questions[state];
       let answers = example_answers[state];
       const shots = questions.flatMap((question, index) => 
-        [{ role: "user", content: `I'm at the ${state} state of pomodoro timer for study. ${question}` },
+        [{ role: "user", content: `I'm at the ${state} state of pomodoro timer for study. Our pomodoro is set to 30 minutes with 5 minute break in between ${question}` },
         { role: "assistant", content: answers[index] }]
       .flat())
       console.log(shots);
@@ -94,7 +94,7 @@ function ChatArea(props:ChatAreaProps){
     }, [currentState]);
 
     // connect with Prompt API
-    const [result, setResult] = useState("Loading...");
+    const [result, setResult] = useState(intro);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -140,10 +140,11 @@ function ChatArea(props:ChatAreaProps){
 
 
     return (
-      <Card className="w-full max-w-[48rem] bg-transparent flex-col justify-end">
+      <div className="h-full" style={{paddingBottom:"2rem"}}>
+      <Card className="w-full h-full max-w-[48rem] bg-transparent flex-col justify-start">
       <CardBody>
         <Typography variant="h6" color="blue-gray" className="mb-4 uppercase">
-          ChatBox - {currentState}
+          Your state📚: {currentState}
         </Typography>
         <div className="custom-chat-area">
             {messageList.map((message, index) => (
@@ -173,6 +174,7 @@ function ChatArea(props:ChatAreaProps){
         </div>
       </CardBody>
     </Card>
+    </div>
     )
 }
 
