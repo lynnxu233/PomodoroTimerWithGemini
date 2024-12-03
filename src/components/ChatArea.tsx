@@ -188,7 +188,7 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import { example_questions, example_answers, intro, guidingPrompt} from "@/lib/prompts";
+import { example_questions, example_answers, intro, guidingPrompt_fined} from "@/lib/prompts";
 
 interface ChatMessage {
     id: number;
@@ -215,12 +215,12 @@ function ChatArea(props:ChatAreaProps){
     const [messageList, setMessages] = useState(messages);
 
     const initialBasicPrompt = [
-      {role:"system" , content: guidingPrompt},
+      {role:"system" , content: guidingPrompt_fined},
       ...createShots(currentState)
     ]; 
     const [initialPrompt, setInitialPrompt] = useState(initialBasicPrompt);
     const [prompt, setPrompt] = useState(`I'm at the ${currentState} state of pomodoro timer for study. 
-          It's  ${(new Date()).toLocaleTimeString()}. encourage me to start`)
+          It's  ${(new Date()).toLocaleTimeString()}.`)
 
 
     const deleteMessage = (id: number) => {
@@ -253,24 +253,30 @@ function ChatArea(props:ChatAreaProps){
     // change initialPrompts(N-shot) for different status.
     useEffect(() => {
       const tempShots = [
-        {role:"system" , content: "Pretend to be my supportive study friend. Given me one suggestion to me based on my state of pomodoro timer. Given that Output should be in the format of literal template javascript string."},
+        {role:"system" , content: guidingPrompt_fined},
         ...createShots(currentState)
       ]; 
       setInitialPrompt(tempShots)
       console.log("current state is "+ currentState);
       if(currentState === "shortBreak"){
-        setPrompt(`I'm at the ${currentState} state of pomodoro timer for study. 
-          It's  ${(new Date()).toLocaleTimeString()} 
-          and we'll going to finish ${studyTime/30} pomodoros. we've finished ${numOfPomo} pomodoros`)
+        setPrompt(`I'm at the ${currentState} state. 
+          The current time is  ${(new Date()).toLocaleTimeString()} 
+          and total pomodoros ${studyTime/30} pomodoros. The current Pomodoro number ${numOfPomo}`)
       }
       else if(currentState === "start"){
-        setPrompt(`I'm at the ${currentState} state of pomodoro timer for study. 
-          It's  ${(new Date()).toLocaleTimeString()}. encourage me to start`);
+        setPrompt(`I'm at the ${currentState} state. 
+          Current time is ${(new Date()).toLocaleTimeString()}.`);
+      }
+      else if(currentState === "working"){
+        setPrompt(`I'm at the ${currentState} state. 
+          The current Pomodoro number is ${numOfPomo}.
+          and total ${studyTime/30} pomodoros. The current Pomodoro number ${numOfPomo}.
+          Current time is ${(new Date()).toLocaleTimeString()}.`);
       }
       else{
-      setPrompt(`I'm at the ${currentState} state of pomodoro timer for study. 
+      setPrompt(`I'm at the ${currentState} state. 
       It's  ${(new Date()).toLocaleTimeString()} 
-      and we'll going to finish ${studyTime/30} pomodoros.`)
+      and we've finished ${studyTime/30} pomodoros.`)
     }
 
     }, [currentState]);
