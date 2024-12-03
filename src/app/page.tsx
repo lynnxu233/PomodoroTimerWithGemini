@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 
 import ChatArea from "@/components/ChatArea";
-import ProgressAnimation from "@/components/ProgressAnimation";
 import StartPanel from "@/components/StartPanel";
 
 import {guidingMessages, Message} from "@/lib/messages";
-import PomodoroTimerTest from "@/components/PomodoroTimerTest";
+import PomodoroTimerTest from "@/components/PomodoroTimer";
 import DefaultTimer from "@/components/DefaultTimer";
 
 

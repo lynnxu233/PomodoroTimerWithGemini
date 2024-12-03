@@ -28,7 +28,7 @@ interface PomorodoProps{
     setStatus: (currStatus: string) => void; // this is used for synchronize the chat area
 }
 
-const PomodoroTimerTest: React.FC<PomorodoProps> = (props) => {
+const PomodoroTimer: React.FC<PomorodoProps> = (props) => {
 
   const {studyTime, resetTrigger, setStudyTime, setStatus} = props; 
 
@@ -213,4 +213,4 @@ const PomodoroTimerTest: React.FC<PomorodoProps> = (props) => {
   );
 };
 
-export default PomodoroTimerTest;
+export default PomodoroTimer;

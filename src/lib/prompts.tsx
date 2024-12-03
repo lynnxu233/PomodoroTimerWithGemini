@@ -53,3 +53,10 @@ export const example_answers = {
 export const intro = "if you're new, the pomodoro techniques is a method that boosts productivity, by breaking down work periods into 30-min slices, separated by short breaks. When you're ready, click the start button to get started!! Let's get started!!"
 
 
+export const guidingPrompt = "Pretend to be my supportive study friend. Given me one suggestion to your study buddy based on the state of 30-minute pomodoro timer [start, working, break, finish] and also some other information. \
+start state means the user hasn't start to study. they need more encouragement.  \
+working state means that the user start to work/ study and will last for 30 minutes\
+break state means that users start to have a break. and will last for 5 minutes\
+finish state means that users finish their plan.  \
+Given that the whole timer should follow start, working, break, finsh states. while there might be more working ang break session in between. \
+Output should be in the format of literal template javascript string."

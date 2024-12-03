@@ -7,7 +7,7 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { example_questions, example_answers, intro } from "@/lib/prompts";
+import { example_questions, example_answers, intro, guidingPrompt} from "@/lib/prompts";
 
 interface ChatMessage {
     id: number;
@@ -34,7 +34,7 @@ function ChatArea(props:ChatAreaProps){
     const [messageList, setMessages] = useState(messages);
 
     const initialBasicPrompt = [
-      {role:"system" , content: "Pretend to be my supportive study friend. Given me one sentence to me. Output should be in the format of literal template javascript string."},
+      {role:"system" , content: guidingPrompt},
       ...createShots(currentState)
     ]; 
     const [initialPrompt, setInitialPrompt] = useState(initialBasicPrompt);
@@ -71,7 +71,7 @@ function ChatArea(props:ChatAreaProps){
     // change initialPrompts(N-shot) for different status.
     useEffect(() => {
       const tempShots = [
-        {role:"system" , content: "Pretend to be my supportive study friend. Given me one sentence to me. Output should be in the format of literal template javascript string."},
+        {role:"system" , content: "Pretend to be my supportive study friend. Given me one suggestion to me based on my state of pomodoro timer. Given that Output should be in the format of literal template javascript string."},
         ...createShots(currentState)
       ]; 
       setInitialPrompt(tempShots)
