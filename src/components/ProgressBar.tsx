@@ -6,11 +6,6 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-const style = {
-  margin: "20px",
-  backgroundColor: "white",
-}
-
 interface ProgressBarProp {
   studytime: number;
 }

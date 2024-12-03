@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
 import ChatArea from "@/components/ChatArea";
 import StartPanel from "@/components/StartPanel";

@@ -11,7 +11,7 @@ interface ChatBubbleProps {
 }
 
 export default function ChatBubble(props: ChatBubbleProps) {
-  const { content, author, timestamp, status, id, onDelete } = props;
+  const { content, author, timestamp, id, onDelete } = props;
   const avatarUrl = "https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg";
 
   return (

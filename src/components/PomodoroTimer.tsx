@@ -5,7 +5,6 @@ import { Progress } from '@material-tailwind/react';
 
 import {
     Card,
-    CardHeader,
     CardBody,
     Typography,
     Button,
@@ -33,11 +32,11 @@ const PomodoroTimer: React.FC<PomorodoProps> = (props) => {
   const {studyTime, resetTrigger, setStudyTime, setStatus} = props; 
 
   // State for configuration
-  const [config, setConfig] = useState<PomodoroConfig>({
-    workTime: 30,      // 25 minutes default work time
-    breakTime: 5,      // 5 minutes default short break
+  const config:PomodoroConfig = {
+    workTime: 30,      
+    breakTime: 5,     
     sessionsBeforeCompletion: (studyTime/30)
-  });
+  };
 
 
   // Timer state management

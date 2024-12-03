@@ -5,7 +5,6 @@ import {
   Card,
   CardBody,
   Typography,
-  Button,
 } from "@material-tailwind/react";
 import { example_questions, example_answers, intro, guidingPrompt} from "@/lib/prompts";
 
@@ -48,8 +47,8 @@ function ChatArea(props:ChatAreaProps){
     };
 
     function createShots(state:"start"|"working"|"shortBreak"|"finish"){
-      let questions = example_questions[state];
-      let answers = example_answers[state];
+      const questions = example_questions[state];
+      const answers = example_answers[state];
       const shots = questions.flatMap((question, index) => 
         [{ role: "user", content: `I'm at the ${state} state of pomodoro timer for study. Our pomodoro is set to 30 minutes with 5 minute break in between ${question}` },
         { role: "assistant", content: answers[index] }]
