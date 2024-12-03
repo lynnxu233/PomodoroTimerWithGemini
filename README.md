@@ -40,3 +40,23 @@ We plan to expand its functionality with:
    - Tailored study strategies based on user performance and expert recommendations. 
 
 
+---
+### Test instruction
+Follow these steps to set up and run the application locally:
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository_url> 
+
+2. Navigate to the project directory
+
+3. Install the dependencies:
+    ```bash
+        npm install
+
+4. Start the development server:
+    ```bash
+        npm run dev
+
