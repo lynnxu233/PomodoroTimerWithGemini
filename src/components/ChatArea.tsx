@@ -95,7 +95,7 @@ function ChatArea(props:ChatAreaProps){
 
     // connect with Prompt API
     const [result, setResult] = useState(intro);
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
 
     useEffect(() => {
       console.log("initial prompt: "+ initialPrompt);
@@ -113,7 +113,7 @@ function ChatArea(props:ChatAreaProps){
         })
         .catch((err) => {
           console.error("Error:", err);
-          setError("Failed to load advice.");
+          // setError("Failed to load advice.");
         });
     }, [initialPrompt, prompt]);
 

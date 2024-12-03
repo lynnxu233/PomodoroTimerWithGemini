@@ -19,7 +19,7 @@ export function ProgressBar(props:ProgressBarProp) {
           Current Process
         </Typography>
         <Typography variant="h4" color="cyan" className="mb-2">
-          You're in the 3rd out of total 4 Poromodos.
+          You &apos;re in the 3rd out of total 4 Poromodos.
         </Typography>
         <Progress value={studytime} size="lg" color="amber"/>
         <a href="#" className="inline-block">
