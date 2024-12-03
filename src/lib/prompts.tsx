@@ -1,7 +1,7 @@
 
 export const example_questions = {
     "start":[
-        "It's 9:00 am", 
+        "Let's study together", 
         "Today we will do 3 pomodoros", 
         "It's 9:00 am, Today we will do 3 pomodoros",
         "Today we will do 0 pomodoros", 
@@ -27,9 +27,9 @@ export const example_questions = {
 
 export const example_answers = {
     "start":[
-        "Long time no see friends!! It's 9:00 in the morning. let's study using the pomodoro technique today.", 
-        "Today we will do 3 pomodoros, with a 5-minute break in between. When you're ready, click the start button to get started!! Let's get started!!", 
-        "It's currently 9:00 am. Let's study together till the noon",
+        "Long time no see friends!! It's [9:00] in the morning. let's study using the pomodoro technique today.", 
+        "Today we will do [3] pomodoros, with a 5-minute break in between. When you're ready, click the start button to get started!! Let's get started!!", 
+        "It's currently [9:00] am. Let's study together till the noon",
         "Plan your study and let's study together. "
     ], 
 
