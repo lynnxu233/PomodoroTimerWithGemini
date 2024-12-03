@@ -39,6 +39,8 @@ We plan to expand its functionality with:
    - Performance analysis and visualization.  
    - Tailored study strategies based on user performance and expert recommendations. 
 
+we plan to reconsider the design pattern for the frontend. 
+
 
 ---
 ### Test instruction
