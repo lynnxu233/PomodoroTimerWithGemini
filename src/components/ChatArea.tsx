@@ -261,7 +261,7 @@ function ChatArea(props:ChatAreaProps){
       if(currentState === "shortBreak"){
         setPrompt(`I'm at the ${currentState} state. 
           The current time is  ${(new Date()).toLocaleTimeString()} 
-          and total pomodoros ${studyTime/30} pomodoros. The current Pomodoro number ${numOfPomo}`)
+          and there're total ${studyTime/30} pomodoros. The current Pomodoro number ${numOfPomo}`)
       }
       else if(currentState === "start"){
         setPrompt(`I'm at the ${currentState} state. 
@@ -270,7 +270,7 @@ function ChatArea(props:ChatAreaProps){
       else if(currentState === "working"){
         setPrompt(`I'm at the ${currentState} state. 
           The current Pomodoro number is ${numOfPomo}.
-          and total ${studyTime/30} pomodoros. The current Pomodoro number ${numOfPomo}.
+          and there are total ${studyTime/30} pomodoros.
           Current time is ${(new Date()).toLocaleTimeString()}.`);
       }
       else{
