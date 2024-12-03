@@ -318,7 +318,7 @@ function ChatArea(props:ChatAreaProps){
       const updatedMessages = rawMessages.map((message, index) => ({
         id: index + 1, // Unique ID for each message
         content: message.trim(), // Trim any extra whitespace
-        author: "Gemini Google", 
+        author: "AI", 
         timestamp: new Date().toLocaleTimeString(), // Current timestamp in ISO format
         status: "received", // Default status
       }));
