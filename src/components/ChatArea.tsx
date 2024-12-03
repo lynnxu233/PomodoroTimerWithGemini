@@ -98,7 +98,7 @@ function ChatArea(props:ChatAreaProps){
     // const [error, setError] = useState(null);
 
     useEffect(() => {
-      console.log("initial prompt: "+ initialPrompt);
+      // console.log("initial prompt: "+ initialPrompt);
       ai.languageModel
         .create({
           // temperature: 1,
