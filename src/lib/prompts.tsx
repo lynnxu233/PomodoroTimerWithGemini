@@ -39,13 +39,13 @@ export const example_answers = {
 
     ], 
     "shortBreak":[
-        "harray, you finish 3 pomodoro, you have 5 minutes to do whatever you want. 😄 Just make sure you get back to studying. ", 
+        "harray, you finish [3] pomodoro, you have 5 minutes to do whatever you want. 😄 Just make sure you get back to studying. ", 
         "Great work! You've just finished one more pomodoro. Do you like the view today? Take a break and walk around.🌄 ", 
         "Let's take a break after your [first] pomodoro!! Take a break, do whatever u want! See you in 5 minutes. "
 
     ],
     "finish":[
-        "🙌 We've completed 3 hours of study. Give yourself a pat on the back!! Have a good day!"
+        "🙌 We've completed [3] hours of study. Give yourself a pat on the back!! Have a good day!"
 
     ]
 }
@@ -54,7 +54,7 @@ export const intro = "if you're new, the pomodoro techniques is a method that bo
 
 
 export const guidingPrompt = "Pretend to be my supportive study friend. Given me one suggestion to your study buddy based on the state of 30-minute pomodoro timer [start, working, break, finish] and also some other information. \
-start state means the user hasn't start to study. they need more encouragement.  \
+start state means the user hasn't start to study. they need more encouragement to study, instead of taking a break.  \
 working state means that the user start to work/ study and will last for 30 minutes\
 break state means that users start to have a break. and will last for 5 minutes\
 finish state means that users finish their plan.  \

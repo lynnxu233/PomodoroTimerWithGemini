@@ -29,7 +29,7 @@ function ChatArea(props:ChatAreaProps){
     const {messages, status, studyTime} = props;
     const [numOfPomo, setNumOfPomo] = useState(0);
 
-    const [currentState, setCurrentState] = useState("start");
+    const [currentState, setCurrentState] = useState<'start'| 'working' | 'shortBreak' | 'finish'>("start");
     const [messageList, setMessages] = useState(messages);
 
     const initialBasicPrompt = [
@@ -64,7 +64,8 @@ function ChatArea(props:ChatAreaProps){
       {
         setNumOfPomo(prev => prev +1);
       }
-      setCurrentState(status);
+      const castedStatus = status as "start" | "working" | "shortBreak" | "finish";
+      setCurrentState(castedStatus);
     }, [status]);
 
     // change initialPrompts(N-shot) for different status.
@@ -75,7 +76,7 @@ function ChatArea(props:ChatAreaProps){
       ]; 
       setInitialPrompt(tempShots)
       console.log("current state is "+ currentState);
-      if(currentState === "break"){
+      if(currentState === "shortBreak"){
         setPrompt(`I'm at the ${currentState} state of pomodoro timer for study. 
           It's  ${(new Date()).toLocaleTimeString()} 
           and we'll going to finish ${studyTime/30} pomodoros. we've finished ${numOfPomo} pomodoros`)
