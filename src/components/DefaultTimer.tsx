@@ -18,8 +18,7 @@ const DefaultTimer: React.FC = () => {
             </p>
           </div>
           <Typography className="text-center">  Unlock Your Productivity Potential 💡 </Typography>
-          <Typography className="text-center">  You're never studying alone with Gemini by your side. 🚀 </Typography>
-         
+          <Typography className="text-center">  You &apos;re never studying alone with Gemini by your side. 🚀 </Typography>
         </CardBody>
       </Card>
 
