@@ -158,10 +158,19 @@ const PomodoroTimer: React.FC<PomorodoProps> = (props) => {
 
   return (
     <div className="w-full max-w-md mx-auto space-y-4">
-      <Card>
+      <Card
+              placeholder={undefined} 
+              onPointerEnterCapture={() => {}} 
+              onPointerLeaveCapture={() => {}}>
 
-        <CardBody>
-        <Typography className="text-center">Pomodoro Timer</Typography>
+        <CardBody
+                placeholder={undefined} 
+                onPointerEnterCapture={() => {}} 
+                onPointerLeaveCapture={() => {}}>
+        <Typography className="text-center"
+                placeholder={undefined} 
+                onPointerEnterCapture={() => {}} 
+                onPointerLeaveCapture={() => {}}>Pomodoro Timer</Typography>
           {/* Timer Display */}
           <div className="text-center mb-4">
             <p className="text-2xl font-bold mb-2">
@@ -177,6 +186,9 @@ const PomodoroTimer: React.FC<PomorodoProps> = (props) => {
           <Progress 
             value={calculateProgress()} 
             className="w-full mb-4 bg-stone-300"
+            placeholder={undefined} 
+            onPointerEnterCapture={() => {}} 
+            onPointerLeaveCapture={() => {}}
           />
 
           {/* Session Counter */}
@@ -194,7 +206,10 @@ const PomodoroTimer: React.FC<PomorodoProps> = (props) => {
           <div className="flex justify-center space-x-4 mb-4">
             <Button 
               onClick={toggleTimer}
-              variant={isRunning ? 'destructive' : 'default'}
+              // variant={isRunning ? 'destructive' : 'default'}
+              placeholder={undefined} 
+              onPointerEnterCapture={() => {}} 
+              onPointerLeaveCapture={() => {}}
             >
               {isRunning ? 'Pause' : 'Start'}
             </Button>

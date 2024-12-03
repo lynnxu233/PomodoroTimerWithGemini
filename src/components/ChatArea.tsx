@@ -323,9 +323,24 @@ function ChatArea(props:ChatAreaProps){
 
     return (
       <div className="h-full" style={{paddingBottom:"2rem"}}>
-      <Card className="w-full h-full max-w-[48rem] bg-transparent flex-col justify-start">
-      <CardBody>
-        <Typography variant="h6" color="blue-gray" className="mb-4 uppercase">
+     <Card 
+        variant="gradient" 
+        className="w-full h-full max-w-[48rem] bg-transparent flex-col justify-start"
+        placeholder={undefined} 
+        onPointerEnterCapture={() => {}} 
+        onPointerLeaveCapture={() => {}}
+      >
+      <CardBody placeholder={undefined}
+      onPointerEnterCapture={() => {}} 
+      onPointerLeaveCapture={() => {}}>
+      <Typography 
+            variant="h6" 
+            color="blue-gray" 
+            className="mb-4 uppercase"
+            placeholder={undefined}
+            onPointerEnterCapture={() => {}} 
+            onPointerLeaveCapture={() => {}}
+          >
           Your state📚: {currentState}
         </Typography>
         <div className="custom-chat-area">

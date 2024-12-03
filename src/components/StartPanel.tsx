@@ -30,9 +30,19 @@ export default function StartPanel({ onStart, onReset}){
 
 
     return (
-          <Card className="w-full max-w-[48rem] flex-col bg-transparent justify-start">
-            <CardBody>
-              <Typography variant="h4" color="black" className="mb-2">
+          <Card 
+          className="w-full max-w-[48rem] flex-col bg-transparent justify-start"
+          placeholder={undefined} 
+          onPointerEnterCapture={() => {}} 
+          onPointerLeaveCapture={() => {}}>
+            <CardBody
+                    placeholder={undefined} 
+                    onPointerEnterCapture={() => {}} 
+                    onPointerLeaveCapture={() => {}}>
+              <Typography variant="h4" color="black" className="mb-2"
+                      placeholder={undefined} 
+                      onPointerEnterCapture={() => {}} 
+                      onPointerLeaveCapture={() => {}}>
                 Start Your Journey with me 😊
               </Typography>
               <div>
@@ -41,7 +51,10 @@ export default function StartPanel({ onStart, onReset}){
               <div className="flex flex-row" >
 
                 <Button variant="text" className="flex items-center gap-2" style={{marginTop:"1rem"}} 
-                onClick={handleStart}>
+                onClick={handleStart}
+                placeholder={undefined} 
+                onPointerEnterCapture={() => {}} 
+                onPointerLeaveCapture={() => {}}>
                   Start
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +73,10 @@ export default function StartPanel({ onStart, onReset}){
                 </Button>
 
               <Button variant="text" className="flex items-center gap-2" style={{marginTop:"1rem"}} 
-                onClick={handleReset}>
+                onClick={handleReset}
+                placeholder={undefined} 
+                onPointerEnterCapture={() => {}} 
+                onPointerLeaveCapture={() => {}}>
                   Reset
 
                 </Button>
